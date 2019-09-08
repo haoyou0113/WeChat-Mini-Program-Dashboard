@@ -1,12 +1,54 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from 'react';
+import { Menu, Icon } from 'antd';
+import { NavLink } from 'react-router-dom';
+import MenuConfig from './../../config/menuConfig';
+import './index.less';
+const SubMenu = Menu.SubMenu;
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default class NavLeft extends Component {
+  componentWillMount() {
+    const menuTreeNode = this.renderMenu(MenuConfig);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    this.setState({
+      menuTreeNode
+    });
+  }
+  // menu render
+  renderMenu = data => {
+    return data.map(item => {
+      if (item.children) {
+        return (
+          <SubMenu title={item.title} key={item.key}>
+            {this.renderMenu(item.children)}
+          </SubMenu>
+        );
+      }
+      return (
+        <Menu.Item title={item.title} key={item.key}>
+          {item.title}
+        </Menu.Item>
+      );
+    });
+  };
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  handleClick = e => {
+    console.log('click ', e);
+    this.setState({
+      current: e.key
+    });
+  };
+  render() {
+    return (
+      <div className='navleft'>
+        <div className='logo'>
+          <img src='/asset/logo-ant.svg' alt='' />
+          <h1>Dashboard</h1>
+        </div>
+        <Menu theme='dark'>{this.state.menuTreeNode}</Menu>
+      </div>
+    );
+  }
+}
