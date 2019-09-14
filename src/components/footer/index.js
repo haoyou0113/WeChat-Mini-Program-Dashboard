@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css';
+import './index.less';
 
 export default class Footer extends Component {
   constructor(props) {
@@ -7,6 +7,6 @@ export default class Footer extends Component {
   }
 
   render() {
-    return <div>footer</div>;
+    return <div className='footer'>CoypRights @2019</div>;
   }
 }
