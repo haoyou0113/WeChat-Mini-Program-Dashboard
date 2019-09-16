@@ -12,7 +12,7 @@ const menuList = [
         key: '/admin/ui/buttons'
       },
       {
-        title: '弹框',
+        title: 'Bounced',
         key: '/admin/ui/modals'
       },
       {
@@ -20,19 +20,19 @@ const menuList = [
         key: '/admin/ui/loadings'
       },
       {
-        title: '通知提醒',
+        title: 'notifications',
         key: '/admin/ui/notification'
       },
       {
-        title: '全局Message',
+        title: 'Global Message',
         key: '/admin/ui/messages'
       },
       {
-        title: 'Tab页签',
+        title: 'Tab',
         key: '/admin/ui/tabs'
       },
       {
-        title: '图片画廊',
+        title: 'Photo gallery',
         key: '/admin/ui/gallery'
       },
       {
