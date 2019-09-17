@@ -5,6 +5,12 @@ import Login from './pages/login';
 import Admin from './admin';
 import Uibutton from './pages/ui/button';
 import Nomatch from './pages/ui/nomatch';
+import Modals from './pages/ui/modal';
+import Notice from './pages/ui/notice';
+import Loading from './pages/ui/loading';
+import Messages from './pages/ui/message';
+import Tabs from './pages/ui/tabs';
+
 export default class IRouter extends Component {
   render() {
     return (
@@ -18,12 +24,12 @@ export default class IRouter extends Component {
                 <Switch>
                   {/* <Route path="/home" component={Home} /> */}
                   <Route path='/admin/ui/buttons' component={Uibutton} />
-                  {/* <Route path="/ui/modals" component={Modals} />
-                                    <Route path="/ui/loadings" component={Loadings} />
-                                    <Route path="/ui/notification" component={Notice} />
-                                    <Route path="/ui/messages" component={Messages} />
-                                    <Route path="/ui/tabs" component={Tabs} />
-                                    <Route path="/ui/gallery" component={Gallery} />
+                  <Route path='/admin/ui/modals' component={Modals} />
+                  <Route path='/admin/ui/loadings' component={Loading} />
+                  <Route path='/admin/ui/notification' component={Notice} />
+                  <Route path='/admin/ui/messages' component={Messages} />
+                  <Route path='/admin/ui/tabs' component={Tabs} />
+                  {/*   <Route path="/ui/gallery" component={Gallery} />
                                     <Route path="/ui/carousel" component={Carousel} />
                                     <Route path="/form/login" component={FormLogin} />
                                     <Route path="/form/reg" component={FormRegister} />
