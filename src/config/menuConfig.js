@@ -42,7 +42,7 @@ const menuList = [
     ]
   },
   {
-    title: 'form',
+    title: 'Form',
     key: '/admin/form',
     children: [
       {
@@ -56,69 +56,69 @@ const menuList = [
     ]
   },
   {
-    title: '表格',
+    title: 'Table',
     key: '/admin/table',
     children: [
       {
-        title: '基础表格',
+        title: 'Basic Form',
         key: '/admin/table/basic'
       },
       {
-        title: '高级表格',
+        title: 'Advanced Form',
         key: '/admin/table/high'
       }
     ]
   },
   {
-    title: '富文本',
+    title: 'Rich Text',
     key: '/admin/rich'
   },
   {
-    title: '城市管理',
+    title: 'City Management',
     key: '/admin/city'
   },
   {
-    title: '订单管理',
+    title: 'Orders Management',
     key: '/admin/order',
     btnList: [
       {
-        title: '订单详情',
+        title: 'Orders Details',
         key: 'detail'
       },
       {
-        title: '结束订单',
+        title: 'Closed Orders',
         key: 'finish'
       }
     ]
   },
   {
-    title: '员工管理',
+    title: 'Employee Management',
     key: '/admin/user'
   },
   {
-    title: '车辆地图',
+    title: 'Location of Bikes',
     key: '/admin/bikeMap'
   },
   {
-    title: '图标',
+    title: 'Charts',
     key: '/admin/charts',
     children: [
       {
-        title: '柱形图',
+        title: 'Bar Charts',
         key: '/admin/charts/bar'
       },
       {
-        title: '饼图',
+        title: 'Pie Charts',
         key: '/admin/charts/pie'
       },
       {
-        title: '折线图',
+        title: 'Line Charts',
         key: '/admin/charts/line'
       }
     ]
   },
   {
-    title: '权限设置',
+    title: 'Permission Setting',
     key: '/admin/permission'
   }
 ];
