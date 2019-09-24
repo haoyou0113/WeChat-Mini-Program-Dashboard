@@ -111,27 +111,27 @@ class FormLogin extends Component {
                 ]
               })(
                 <Select>
-                  <Option value='1'>123</Option>
-                  <Option value='2'>345</Option>
-                  <Option value='3'>789</Option>
-                  <Option value='4'>321</Option>
-                  <Option value='5'>543</Option>
+                  <Option value='1'>Soccer</Option>
+                  <Option value='2'>Basketball</Option>
+                  <Option value='3'>Pool</Option>
+                  <Option value='4'>Football</Option>
+                  <Option value='5'>Baseball</Option>
                 </Select>
               )}
             </FormItem>
-            <FormItem label='Hobbits' {...formItemLayout}>
-              {getFieldDecorator('hobbits', {
+            <FormItem label='Habits' {...formItemLayout}>
+              {getFieldDecorator('habits', {
                 initialValue: ['1', '2'],
                 rules: [
                   {
                     required: true,
-                    message: 'Hobbits is required'
+                    message: 'Habits is required'
                   }
                 ]
               })(
                 <Select mode='multiple'>
                   <Option value='1'>Soccer</Option>
-                  <Option value='2'>basketball</Option>
+                  <Option value='2'>Basketball</Option>
                   <Option value='3'>Pool</Option>
                   <Option value='4'>Football</Option>
                   <Option value='5'>Baseball</Option>
