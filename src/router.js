@@ -9,6 +9,7 @@ import Modals from './pages/ui/modal';
 import Notice from './pages/ui/notice';
 import Loading from './pages/ui/loading';
 import Messages from './pages/ui/message';
+import Gallery from './pages/ui/gallery';
 import Tabs from './pages/ui/tabs';
 
 export default class IRouter extends Component {
@@ -29,8 +30,8 @@ export default class IRouter extends Component {
                   <Route path='/admin/ui/notification' component={Notice} />
                   <Route path='/admin/ui/messages' component={Messages} />
                   <Route path='/admin/ui/tabs' component={Tabs} />
-                  {/*   <Route path="/ui/gallery" component={Gallery} />
-                                    <Route path="/ui/carousel" component={Carousel} />
+                  <Route path='/admin/ui/gallery' component={Gallery} />
+                  {/* <Route path="/ui/carousel" component={Carousel} />
                                     <Route path="/form/login" component={FormLogin} />
                                     <Route path="/form/reg" component={FormRegister} />
                                     <Route path="/table/basic" component={BasicTable} />
