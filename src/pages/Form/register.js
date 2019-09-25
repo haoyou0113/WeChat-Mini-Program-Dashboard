@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+import './index.less';
 import {
   Card,
   Form,
@@ -18,9 +20,62 @@ import {
 import FormItem from 'antd/lib/form/FormItem';
 
 class FormLogin extends Component {
+  handleSubmit = () => {
+    let userInfo = this.props.form.getFieldsValue();
+    console.log(JSON.stringify(userInfo));
+    message.success(
+      `${userInfo.userName} Congratulations! your password is ${userInfo.userPwd}`
+    );
+  };
+  getBase64 = (img, callback) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  };
+
+  beforeUpload = file => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      message.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  };
+  state = {
+    loading: false
+  };
+  handleChange = info => {
+    if (info.file.status === 'uploading') {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      this.getBase64(info.file.originFileObj, imageUrl =>
+        this.setState({
+          imageUrl,
+          loading: false
+        })
+      );
+    }
+  };
   render() {
+    const uploadButton = (
+      <div>
+        <Icon type={this.state.loading ? 'loading' : 'plus'} />
+        <div className='ant-upload-text'>Upload</div>
+      </div>
+    );
+    const offsetLayout = {
+      wrapperCol: { xs: 24, sm: { span: 12, offset: 4 } }
+    };
+    const { imageUrl } = this.state;
     const { Option } = Select;
     const { getFieldDecorator } = this.props.form;
+    const TextArea = Input.TextArea;
     const formItemLayout = {
       labelCol: { xs: 24, sm: 4 },
       wrapperCol: { xs: 24, sm: 12 }
@@ -137,6 +192,65 @@ class FormLogin extends Component {
                   <Option value='5'>Baseball</Option>
                 </Select>
               )}
+            </FormItem>
+            <FormItem label='Married' {...formItemLayout}>
+              {getFieldDecorator('isMarried', {
+                initialValue: 'checked'
+              })(<Switch />)}
+            </FormItem>
+            <FormItem label='Birthday' {...formItemLayout}>
+              {getFieldDecorator('birthday', {
+                initialValue: moment('1992-08-07')
+              })(<DatePicker />)}
+              {/* moment is third party method  */}
+            </FormItem>
+            <FormItem label='Address' {...formItemLayout}>
+              {getFieldDecorator('address', {
+                initialValue: ''
+              })(<TextArea />)}
+            </FormItem>
+            <FormItem label='WeakUpTime' {...formItemLayout}>
+              {getFieldDecorator('weakuptime', {
+                initialValue: ''
+              })(<TimePicker showTime format='YYYY-MM-DD' />)}
+            </FormItem>
+            <FormItem label='UserImages' {...formItemLayout}>
+              {getFieldDecorator('userImage', {
+                initialValue: ''
+              })(
+                <Upload
+                  name='avatar'
+                  listType='picture-card'
+                  className='avatar-uploader'
+                  showUploadList={false}
+                  action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+                  beforeUpload={this.beforeUpload}
+                  onChange={this.handleChange}
+                >
+                  {' '}
+                  {this.state.imageUrl ? (
+                    <img
+                      src={imageUrl}
+                      alt='avatar'
+                      style={{ width: '100%' }}
+                    />
+                  ) : (
+                    uploadButton
+                  )}
+                </Upload>
+              )}
+            </FormItem>
+            <FormItem {...offsetLayout}>
+              {getFieldDecorator('Contrast')(
+                <Checkbox title='User Contrast'>
+                  I have read <a href=''>Contrast</a>
+                </Checkbox>
+              )}
+            </FormItem>
+            <FormItem {...offsetLayout}>
+              <Button type='primary' onClick={this.handleSubmit}>
+                Register
+              </Button>
             </FormItem>
           </Form>
         </Card>
