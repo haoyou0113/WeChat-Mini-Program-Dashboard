@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import MenuConfig from './../../config/menuConfig';
 
 import './index.less';
-const SubMenu = Menu.SubMenu;
+
+const { SubMenu } = Menu;
 
 export default class NavLeft extends Component {
   componentWillMount() {
@@ -16,17 +17,18 @@ export default class NavLeft extends Component {
   }
   // menu render
   renderMenu = data => {
+    console.log(data);
     return data.map(item => {
       if (item.children) {
         return (
-          <SubMenu title={item.title} key={item.key}>
+          <SubMenu title={item.category} key={item.key}>
             {this.renderMenu(item.children)}
           </SubMenu>
         );
       }
       return (
-        <Menu.Item title={item.title} key={item.key}>
-          <NavLink to={item.key}> {item.title} </NavLink>
+        <Menu.Item title={item.category} key={item.key}>
+          <NavLink to={item.key}> {item.category} </NavLink>
         </Menu.Item>
       );
     });
@@ -41,11 +43,13 @@ export default class NavLeft extends Component {
       current: e.key
     });
   };
+
   render() {
     return (
       <div className='navleft'>
         <div className='logo'>
-          <img src='/asset/logo-ant.svg' alt='' />
+          <img src='/asset/logo.png' alt='' />
+          {/* <img src='/my-app/public/logo.png' alt='' /> */}
           <h1>Dashboard</h1>
         </div>
         <Menu theme='dark'>{this.state.menuTreeNode}</Menu>

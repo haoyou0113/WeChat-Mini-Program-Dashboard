@@ -3,18 +3,12 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import App from './App';
 import Login from './pages/login';
 import Admin from './admin';
-import Uibutton from './pages/ui/button';
 import Nomatch from './pages/ui/nomatch';
-import Modals from './pages/ui/modal';
-import Notice from './pages/ui/notice';
-import Loading from './pages/ui/loading';
-import Messages from './pages/ui/message';
-import Gallery from './pages/ui/gallery';
+import NewsAdv from './pages/ui/newAdv';
+import TradingPlatform from './pages/ui/SecondPages/TradingPlatform';
 import Carousel from './pages/ui/carousel';
-import FormLogin from './pages/Form/login';
-import FormRegister from './pages/Form/register';
-import BasicTable from './pages/table/basicTable';
-import Tabs from './pages/ui/tabs';
+
+import Home from './pages/home';
 
 export default class IRouter extends Component {
   render() {
@@ -23,33 +17,22 @@ export default class IRouter extends Component {
         <App>
           <Route path='/login' component={Login} />
           <Route
-            path='/admin'
+            path='/'
             render={() => (
               <Admin>
                 <Switch>
                   {/* <Route path="/home" component={Home} /> */}
-                  <Route path='/admin/ui/buttons' component={Uibutton} />
-                  <Route path='/admin/ui/modals' component={Modals} />
-                  <Route path='/admin/ui/loadings' component={Loading} />
-                  <Route path='/admin/ui/notification' component={Notice} />
-                  <Route path='/admin/ui/messages' component={Messages} />
-                  <Route path='/admin/ui/tabs' component={Tabs} />
-                  <Route path='/admin/ui/gallery' component={Gallery} />
+                  {/* <Route path='/admin/ui' component={Home} /> */}
                   <Route path='/admin/ui/carousel' component={Carousel} />
-                  <Route path='/admin/form/login' component={FormLogin} />
-                  <Route path='/admin/form/reg' component={FormRegister} />
-                  <Route path='/admin/table/basic' component={BasicTable} />
-                  {/*<Route path="/table/high" component={HighTable} />
-                                    <Route path="/city" component={City} />
-                                    <Route path="/order" component={Order} />
-                                    <Route path="/user" component={User} />
-                                    <Route path="/bikeMap" component={BikeMap} />
-                                    <Route path="/charts/bar" component={Bar} />
-                                    <Route path="/charts/pie" component={Pie} />
-                                    <Route path="/charts/line" component={Line} />
-                                    <Route path="/rich" component={RichText} />
-                                    <Route path="/permission" component={Permission} />
-                                    <Redirect to="/home" /> */}
+                  <Route path='/admin/ui/newsAdv' component={NewsAdv} />
+                  <Route path='/admin/ui/newsAdv' component={NewsAdv} />
+                  <Route
+                    path='/admin/SubMenu/tradingPlatform'
+                    component={TradingPlatform}
+                  />
+                  <Route path='/admin/ui/newsAdv' component={NewsAdv} />
+                  {/* <Route path='/admin/ui/newAdv' component={Test} /> */}
+
                   <Route component={Nomatch} />
                 </Switch>
               </Admin>

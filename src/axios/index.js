@@ -30,8 +30,9 @@ export default class Axios {
   static ajax(options) {
     let loading;
     if (options.data && options.data.isShowLoading !== false) {
+      // 设置是都需要显示加载
       loading = document.getElementById('ajaxLoading');
-      loading.style.display = 'block';
+      // loading.style.display = 'block';
       // loading ani
     }
     let baseUrl =
@@ -47,6 +48,7 @@ export default class Axios {
         if (options.data && options.data.isShowLoading !== false) {
           loading = document.getElementById('ajaxLoading');
           loading.style.display = 'none';
+          // 加载成功后关闭 loading
         }
         if (response.status == '200') {
           let res = response.data;

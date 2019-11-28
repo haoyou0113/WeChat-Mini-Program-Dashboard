@@ -44,8 +44,8 @@ export default class Header extends React.Component {
         <Row className='header-top'>
           {menuType ? (
             <Col span='6' className='logo'>
-              <img src='/assets/logo-ant.svg' alt='' />
-              <span>IMooc 通用管理系统</span>
+              <img src='/my-app/public/logo.png' alt='' />
+              <span>管理系统</span>
             </Col>
           ) : (
             ''
